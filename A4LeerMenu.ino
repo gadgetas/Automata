@@ -6,7 +6,7 @@ void MenuComandos() {
 }
 
 void MenuComandosDesarrollo() {
-  Serie.println(F("L:(LOG)Establece verbosidad"));
+  Serie.println(F("Ln:(LOG) Establece verbosidad"));
   Serie.println(F("EG:(EEPROM)Guardar"));
   Serie.println(F("EL:(EEPROM)Leer"));
 }
@@ -14,4 +14,3 @@ void MenuComandosDesarrollo() {
 void MenuInformacion(){
   Serie.println(F("---- MENU DE INFORMACION DE VALORES ----"));
 }
-

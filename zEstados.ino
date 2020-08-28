@@ -9,8 +9,15 @@ void CambiarEstado(int sigEstado) {
     case estadoError:
       log(F("EdoError"), logNoticia);
       break;
+    case estadoInicio:
+      // Arranque inicial del microcontrolador
+      // Inicialización básica del sistema
+      break;
     case estadoConfiguracion:
       log(F("EdoConfiguracion"), logNoticia);
+      break;
+    case estadoEspera:
+      log(F("EdoEspera"), logNoticia);
       break;
     default:
       log(F("Estado no valido"), logError);
@@ -60,11 +67,27 @@ void EstadoDesconectado() {
 /*****************************************************************************/
 /*****************************************************************************/
 /*****************************************************************************/
-void EstadoConfiguracion() {
-  A2ConfLog();
+void EstadoInicio() {
+  Serie.begin(Serial_bps);  
+  /****SI ES DIFERENTE EL PUERTO DEL LOG***/
+  /* Serial_bps.begin(SerialLog_bps);*/
+  A1Informacion();
   A1ConfGeneral();
-  // TODO: CambiarEstado(estadoEspera);
+  A2ConfLog();
+  CambiarEstado(estadoConfiguracion);
+}
+
+/*****************************************************************************/
+/*****************************************************************************/
+/*****************************************************************************/
+void EstadoConfiguracion() {
+  CambiarEstado(estadoEspera);
+  // TODO: 
   // TODO: LeerDatosEEPROM();
 }
 
-
+/*****************************************************************************/
+/*****************************************************************************/
+/*****************************************************************************/
+void EstadoEspera() {
+}

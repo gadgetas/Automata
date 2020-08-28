@@ -25,14 +25,15 @@
 /************** VARIABLES GLOBALES PARA DEPURACIÓN *****************/
 /*******************************************************************/
 String logMsj;
+int verbosidadAnt;
 
 /*******************************************************************/
 /******** CONFIGURACIÓN INICIAL DE TERMINALES Y VARIABLES **********/
 /*******************************************************************/
 void A2ConfLog() {
-  // Modo desarrollo: 7
-  // Modo producción: 3
-  Datos.verbosidad = 7;
+  // Verbosidad por defecto, LogDebug
+  verbosidadAnt = logDebug;
+  Datos.verbosidad = logDebug;
   logMsj = String(F("!LOG"));
 }
 
@@ -62,4 +63,17 @@ void SetVerbosidad(int grado) {
   if (Datos.verbosidad < logEmergencia)
     Datos.verbosidad = logEmergencia;
   Serie.println(logMsj + "=" + Datos.verbosidad);
+}
+
+/******************************************************************************/
+/******************** ESTABLECE EL MODO DEBUG DEL PROYECTO*********************/
+/******************************************************************************/
+void A2ModoDebug() {
+  //Switchea entre los mensajes debug y el que tiene establecido
+  if (Datos.verbosidad == logDebug){
+    // Aqui van las instrucciones de modo debug 
+  }
+  else{
+    // Aqui van las instrucciones de modo NO
+  }
 }

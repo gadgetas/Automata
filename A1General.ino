@@ -5,11 +5,11 @@ struct DatosAutomata {
   /********************************** A2Log **********************************/
   int verbosidad;             // Nivel de verbosidad
   /**************************** Activación Error *****************************/
-  // Tiempo en el cual debe activarse o liberar el freno, si excede el tiempo,
+  // Tiempo en el cual debe activarse o liberar una función si excede el tiempo
   // es porque hubo un error
   unsigned long tiempoError;
   /***************************** Tiempo de espera ****************************/
-  // Tiempo que espera en la activación para la moneda de Un peso
+  // Tiempo que espera en la activación para una función de un módulo
   unsigned long tiempoIR1;
 };
 
@@ -31,7 +31,7 @@ void A1ConfGeneral() {
   tEsperaAnt = millis();
   randomSeed(millis());
   Datos.tiempoError = 35000;      // 25 segundos
-  Datos.verbosidad = 7;
+  Datos.verbosidad = 7;           // Nivel de verbosidad por defecto
 }
 
 // Envia información del automáta
@@ -51,6 +51,3 @@ void InformacionDatos() {
   Serie.println(Estado);
   Serie.println(F("------INFO------"));
 }
-
-
-
